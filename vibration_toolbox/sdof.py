@@ -563,7 +563,8 @@ def steady_state_response(zs=0.1, rmin=0.0, rmax=2.0):
     """
     if not isinstance(zs, list):
         zs = [zs]
-    r = np.linspace(rmin, rmax, int(100 * (rmax - rmin)))
+    linspacenum = int(100 * (rmax - rmin))
+    r = np.linspace(rmin, rmax, linspacenum)    
     A0 = np.zeros((len(zs), len(r)), complex)
     for z in enumerate(zs):
         A0[z[0]] = (1 / (1 - r**2 + 2 * 1j * r * z[1]))
@@ -655,7 +656,8 @@ def transmissibility(zs=np.array([0.05, 0.1, 0.25, 0.5, -0.75]),
     """
     if not isinstance(zs, list):
         zs = [zs]
-    r = np.linspace(rmin, rmax, int(300 * (rmax - rmin)))
+    linspacenum = int(300 * (rmax - rmin))
+    r = np.linspace(rmin, rmax, linspacenum)    
     DT = np.zeros((len(zs), len(r)))
     for z in enumerate(zs):
         # 2.71
